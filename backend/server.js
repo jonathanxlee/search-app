@@ -1,4 +1,4 @@
-const postingListFile = "small_sample.txt"
+const postingListFile = "sample.txt"
 var urlsSize = 0;
 const express = require("express");
 const http = require("http");
@@ -69,8 +69,7 @@ io.sockets.on('connection', function (socket) {
             return;
         }
 
-
-        /* Check that the payload has a room to join */
+        /* Check that the payload has a query */
         var query = payload.query; 
         if('undefined' === typeof query || !query){
             var error_message = 'search didn\'t specify a query, command aborted';
@@ -94,7 +93,6 @@ io.sockets.on('connection', function (socket) {
 });
 
 function processQuery(query, bigCB) {
-  console.log('Process Query: ' + answerJSON);
   var answerJSON = {};
   answerJSON.query = {};
   answerJSON.urls = {};
@@ -156,7 +154,9 @@ function processQuery(query, bigCB) {
         if(typeof term == 'string') {   
           db.get(term, function(err, value) {
               if(err) {
-                console.log('In if : ' + error);
+                if (err.notFound) {
+                  console.log('Not Found');
+                }
                 cb();
               }
 

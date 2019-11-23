@@ -23,8 +23,6 @@ export class App extends React.Component {
 
   handleSubmit(event) {
       event.preventDefault();
-      console.log("trying to add picture url");
-      console.log("value of input field : "+this.state.inputfield);
       if (this.props.onSubmit) {
         this.props.onSubmit(this.state.inputfield);
       }
@@ -45,6 +43,7 @@ export class App extends React.Component {
         </div>
       );
     }
+
     return (
       <div>
         <div className='search text-center'>
@@ -55,7 +54,7 @@ export class App extends React.Component {
               <button className='btn btn-default btn-primary button-size' onClick={this.handleSubmit}>Let's Search</button>
             </form>
         </div>
-        <div>
+        <div className='results'>
           {this.props.urls.map((url,index) => {
             return (<Result url={url} score={this.props.map.get(url)} />);
           })}

@@ -33,3 +33,13 @@ html,
     box-sizing: border-box;
     margin: 5px;
 }
+
+.results {
+  width: 90%;
+  padding: 15px;
+  margin: auto;
+}
+
+.result {
+  padding-bottom: 40px;
+}
