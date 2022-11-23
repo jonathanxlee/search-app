@@ -19,6 +19,6 @@
     "line-reader": "^0.4.0",
     "morgan": "^1.9.1",
     "path": "^0.12.7",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.5.0"
   }
 }
